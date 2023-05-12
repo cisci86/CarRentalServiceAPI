@@ -4,21 +4,17 @@ namespace CarRentalServiceAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
-    public class BookingController : ControllerBase
+    public class VehicleController : ControllerBase
     {
         private readonly CarRentalContext _context;
-        public BookingController(CarRentalContext context)
-        {
-            _context = context;
-        }
-        [HttpPost]
-        public void EndRental()
+        public VehicleController(CarRentalContext context)
         {
 
+            _context = context;
         }
-        [HttpPost]
-        public void StartRental()
+
+        [HttpGet]
+        public void GetVehicles()
         {
 
         }
