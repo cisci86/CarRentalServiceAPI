@@ -4,6 +4,7 @@ using CarRentalServiceAPI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarRentalServiceAPI.Migrations
 {
     [DbContext(typeof(CarRentalContext))]
-    partial class CarRentalContextModelSnapshot : ModelSnapshot
+    [Migration("20230513140006_RemovedMileageFromVehicleAndAddedStartAndEndMileageToBooking")]
+    partial class RemovedMileageFromVehicleAndAddedStartAndEndMileageToBooking
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +24,7 @@ namespace CarRentalServiceAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("CarRentalServiceAPI.Models.Rental", b =>
+            modelBuilder.Entity("CarRentalServiceAPI.Models.Booking", b =>
                 {
                     b.Property<Guid>("BookingNumber")
                         .ValueGeneratedOnAdd()
@@ -60,7 +62,7 @@ namespace CarRentalServiceAPI.Migrations
                     b.HasData(
                         new
                         {
-                            BookingNumber = new Guid("5fd23005-578c-445c-ad37-21dd39c3647e"),
+                            BookingNumber = new Guid("ee87348c-0995-43e6-98b6-b54d152ab2cd"),
                             Active = true,
                             CustomerNumber = "860919-1666",
                             EndMileage = 0,
@@ -71,7 +73,7 @@ namespace CarRentalServiceAPI.Migrations
                         },
                         new
                         {
-                            BookingNumber = new Guid("4ee5a9c6-cd28-4c91-b190-fb3b42c9bdae"),
+                            BookingNumber = new Guid("174155ab-6bad-4984-ac39-d77729dc1c3d"),
                             Active = true,
                             CustomerNumber = "440712-5621",
                             EndMileage = 0,
@@ -155,7 +157,7 @@ namespace CarRentalServiceAPI.Migrations
                         });
                 });
 
-            modelBuilder.Entity("CarRentalServiceAPI.Models.Rental", b =>
+            modelBuilder.Entity("CarRentalServiceAPI.Models.Booking", b =>
                 {
                     b.HasOne("CarRentalServiceAPI.Models.Vehicle", "Vehicle")
                         .WithMany()

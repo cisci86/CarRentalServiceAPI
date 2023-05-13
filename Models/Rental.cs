@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CarRentalServiceAPI.Models
 {
-    public class Booking
+    public class Rental
     {
         [Key]
         public Guid BookingNumber { get; set; } =  Guid.NewGuid();
@@ -13,5 +13,7 @@ namespace CarRentalServiceAPI.Models
         public DateTime RentalEndTime { get; set; }
         public string CustomerNumber { get; set; }
         public bool Active { get; set; }
+        public int StartMileage { get; set; }
+        public int EndMileage { get; set; }
     }
 }

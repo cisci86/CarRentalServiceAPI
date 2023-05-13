@@ -9,7 +9,6 @@ namespace CarRentalServiceAPI.Models
         public string Type { get; set; }
         [Key]
         public string LicensePlateNumber { get; set; }
-        public int Mileage { get; set; }
         public bool Available { get; set; }
     }
 }

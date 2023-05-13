@@ -1,12 +1,15 @@
 using CarRentalServiceAPI;
+using CarRentalServiceAPI.AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 
 var builder = WebApplication.CreateBuilder(args);
+// Add services to the container.
 
 builder.Services.AddDbContext<CarRentalContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CarRentalServiceAPIContext")));
-// Add services to the container.
+
+builder.Services.AddAutoMapper(typeof(BookingProfile));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

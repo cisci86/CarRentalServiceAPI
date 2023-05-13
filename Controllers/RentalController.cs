@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CarRentalServiceAPI.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CarRentalServiceAPI.Controllers
 {
@@ -18,9 +19,9 @@ namespace CarRentalServiceAPI.Controllers
 
         }
         [HttpPost]
-        public void StartRental()
+        public void StartRental( BookingStartVM bookingInfo)
         {
-
+            
         }
     }
 }
