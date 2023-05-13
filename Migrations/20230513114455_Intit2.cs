@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CarRentalServiceAPI.Migrations
 {
-    public partial class Init : Migration
+    public partial class Intit2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -64,12 +64,12 @@ namespace CarRentalServiceAPI.Migrations
             migrationBuilder.InsertData(
                 table: "Bookings",
                 columns: new[] { "BookingNumber", "Active", "CustomerNumber", "RentalEndTime", "RentalStartTime", "VehicleLicensePlateNumber" },
-                values: new object[] { new Guid("460b0272-9561-4352-a129-dd4dd55f2e57"), true, "860919-1666", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 5, 12, 8, 15, 0, 0, DateTimeKind.Unspecified), "KHU876" });
+                values: new object[] { new Guid("1b0acbe9-8c5c-47b7-93dc-3ad7809fcc2b"), true, "440712-5621", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 5, 11, 20, 0, 0, 0, DateTimeKind.Unspecified), "PLD982" });
 
             migrationBuilder.InsertData(
                 table: "Bookings",
                 columns: new[] { "BookingNumber", "Active", "CustomerNumber", "RentalEndTime", "RentalStartTime", "VehicleLicensePlateNumber" },
-                values: new object[] { new Guid("908f78ba-2291-496a-aab1-35f136b89305"), true, "440712-5621", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 5, 11, 20, 0, 0, 0, DateTimeKind.Unspecified), "PLD982" });
+                values: new object[] { new Guid("1dad719a-a576-44cc-a8c2-d91df6a350ba"), true, "860919-1666", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 5, 12, 8, 15, 0, 0, DateTimeKind.Unspecified), "KHU876" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Bookings_VehicleLicensePlateNumber",

@@ -12,7 +12,7 @@ namespace CarRentalServiceAPI.Controllers
         {
             _context = context;
         }
-        [HttpPost]
+        [HttpPatch]
         public void EndRental()
         {
 

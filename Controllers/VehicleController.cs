@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CarRentalServiceAPI.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CarRentalServiceAPI.Controllers
 {
@@ -13,10 +14,22 @@ namespace CarRentalServiceAPI.Controllers
             _context = context;
         }
 
-        [HttpGet]
-        public void GetVehicles()
+        [HttpGet("{vehicleType}")]
+        public async Task<ActionResult<IEnumerable<Vehicle>>> GetVehicles(string vehicleType)
         {
+            List<Vehicle> vehicles;
+            try
+            {
+                 vehicles = _context.Vehicles.Where(v => v.Type == vehicleType).ToList();
 
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, new { Message = ex.Message });
+            }
+
+            return Ok(vehicles);
         }
     }
 }

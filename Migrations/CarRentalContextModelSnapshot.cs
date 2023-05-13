@@ -54,7 +54,7 @@ namespace CarRentalServiceAPI.Migrations
                     b.HasData(
                         new
                         {
-                            BookingNumber = new Guid("460b0272-9561-4352-a129-dd4dd55f2e57"),
+                            BookingNumber = new Guid("1dad719a-a576-44cc-a8c2-d91df6a350ba"),
                             Active = true,
                             CustomerNumber = "860919-1666",
                             RentalEndTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -63,7 +63,7 @@ namespace CarRentalServiceAPI.Migrations
                         },
                         new
                         {
-                            BookingNumber = new Guid("908f78ba-2291-496a-aab1-35f136b89305"),
+                            BookingNumber = new Guid("1b0acbe9-8c5c-47b7-93dc-3ad7809fcc2b"),
                             Active = true,
                             CustomerNumber = "440712-5621",
                             RentalEndTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
