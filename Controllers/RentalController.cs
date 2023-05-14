@@ -17,11 +17,7 @@ namespace CarRentalServiceAPI.Controllers
             _context = context;
             _mapper = mapper;
         }
-        [HttpPatch]
-        public void EndRental()
-        {
-
-        }
+       
         [HttpPost]
         public async Task<ActionResult<string>> StartRental( RentalStartVM rentalInfo)
         {
@@ -43,6 +39,30 @@ namespace CarRentalServiceAPI.Controllers
 
             //return booking number
             return newRental.BookingNumber.ToString();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<string>>> GetActiveRentals()
+        {
+            List<string> activeRentals;
+            try
+            {
+              activeRentals = _context.Rentals.Where(r => r.Active).Select(r => r.BookingNumber.ToString()).ToList();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = ex.Message });
+                throw;
+            }
+                
+
+            return Ok(activeRentals);
+        }
+
+        [HttpPut]
+        public void EndRental()
+        {
+
         }
     }
 }
