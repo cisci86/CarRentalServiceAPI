@@ -10,7 +10,7 @@ namespace CarRentalServiceAPI
         {
         }
 
-        public DbSet<Rental> Bookings { get; set; }
+        public DbSet<Rental> Rentals { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
 
 

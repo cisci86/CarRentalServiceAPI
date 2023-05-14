@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<CarRentalContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CarRentalServiceAPIContext")));
 
-builder.Services.AddAutoMapper(typeof(BookingProfile));
+builder.Services.AddAutoMapper(typeof(RentalProfile));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -1,6 +1,6 @@
 ﻿namespace CarRentalServiceAPI.ViewModels
 {
-    public class BookingStartVM
+    public class RentalStartVM
     {
         public string VehicleLicensePlateNumber { get; set; }
         public DateTime RentalStart { get; set; }
