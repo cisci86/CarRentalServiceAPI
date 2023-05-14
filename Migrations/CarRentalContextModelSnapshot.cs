@@ -35,8 +35,8 @@ namespace CarRentalServiceAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("EndMileage")
-                        .HasColumnType("int");
+                    b.Property<float>("EndMileage")
+                        .HasColumnType("real");
 
                     b.Property<DateTime>("RentalEndTime")
                         .HasColumnType("datetime2");
@@ -44,8 +44,8 @@ namespace CarRentalServiceAPI.Migrations
                     b.Property<DateTime>("RentalStartTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("StartMileage")
-                        .HasColumnType("int");
+                    b.Property<float>("StartMileage")
+                        .HasColumnType("real");
 
                     b.Property<string>("VehicleLicensePlateNumber")
                         .IsRequired()
@@ -55,29 +55,29 @@ namespace CarRentalServiceAPI.Migrations
 
                     b.HasIndex("VehicleLicensePlateNumber");
 
-                    b.ToTable("Bookings");
+                    b.ToTable("Rentals");
 
                     b.HasData(
                         new
                         {
-                            BookingNumber = new Guid("5fd23005-578c-445c-ad37-21dd39c3647e"),
+                            BookingNumber = new Guid("e82e9721-7144-4232-97ac-57a4d087208d"),
                             Active = true,
                             CustomerNumber = "860919-1666",
-                            EndMileage = 0,
+                            EndMileage = 0f,
                             RentalEndTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RentalStartTime = new DateTime(2023, 5, 12, 8, 15, 0, 0, DateTimeKind.Unspecified),
-                            StartMileage = 230148,
+                            StartMileage = 230148f,
                             VehicleLicensePlateNumber = "KHU876"
                         },
                         new
                         {
-                            BookingNumber = new Guid("4ee5a9c6-cd28-4c91-b190-fb3b42c9bdae"),
+                            BookingNumber = new Guid("0efe1892-c700-403f-bd28-b9d5cb2a2258"),
                             Active = true,
                             CustomerNumber = "440712-5621",
-                            EndMileage = 0,
+                            EndMileage = 0f,
                             RentalEndTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RentalStartTime = new DateTime(2023, 5, 11, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            StartMileage = 5689421,
+                            StartMileage = 5689421f,
                             VehicleLicensePlateNumber = "PLD982"
                         });
                 });

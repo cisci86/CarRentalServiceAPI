@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarRentalServiceAPI.Migrations
 {
     [DbContext(typeof(CarRentalContext))]
-    [Migration("20230513114455_Intit2")]
-    partial class Intit2
+    [Migration("20230514140201_InitAfterNameChange")]
+    partial class InitAfterNameChange
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,7 +24,7 @@ namespace CarRentalServiceAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("CarRentalServiceAPI.Models.Booking", b =>
+            modelBuilder.Entity("CarRentalServiceAPI.Models.Rental", b =>
                 {
                     b.Property<Guid>("BookingNumber")
                         .ValueGeneratedOnAdd()
@@ -37,11 +37,17 @@ namespace CarRentalServiceAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("EndMileage")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("RentalEndTime")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("RentalStartTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("StartMileage")
+                        .HasColumnType("int");
 
                     b.Property<string>("VehicleLicensePlateNumber")
                         .IsRequired()
@@ -51,25 +57,29 @@ namespace CarRentalServiceAPI.Migrations
 
                     b.HasIndex("VehicleLicensePlateNumber");
 
-                    b.ToTable("Bookings");
+                    b.ToTable("Rentals");
 
                     b.HasData(
                         new
                         {
-                            BookingNumber = new Guid("1dad719a-a576-44cc-a8c2-d91df6a350ba"),
+                            BookingNumber = new Guid("779b27c3-1f2b-4f3a-b4cb-9315d29d0918"),
                             Active = true,
                             CustomerNumber = "860919-1666",
+                            EndMileage = 0,
                             RentalEndTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RentalStartTime = new DateTime(2023, 5, 12, 8, 15, 0, 0, DateTimeKind.Unspecified),
+                            StartMileage = 230148,
                             VehicleLicensePlateNumber = "KHU876"
                         },
                         new
                         {
-                            BookingNumber = new Guid("1b0acbe9-8c5c-47b7-93dc-3ad7809fcc2b"),
+                            BookingNumber = new Guid("f364ed32-9df9-42c1-937b-7bd366bd1f27"),
                             Active = true,
                             CustomerNumber = "440712-5621",
+                            EndMileage = 0,
                             RentalEndTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RentalStartTime = new DateTime(2023, 5, 11, 20, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartMileage = 5689421,
                             VehicleLicensePlateNumber = "PLD982"
                         });
                 });
@@ -81,9 +91,6 @@ namespace CarRentalServiceAPI.Migrations
 
                     b.Property<bool>("Available")
                         .HasColumnType("bit");
-
-                    b.Property<int>("Mileage")
-                        .HasColumnType("int");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -98,68 +105,59 @@ namespace CarRentalServiceAPI.Migrations
                         {
                             LicensePlateNumber = "ABC123",
                             Available = true,
-                            Mileage = 213456,
                             Type = "Småbil"
                         },
                         new
                         {
                             LicensePlateNumber = "MPK459",
                             Available = true,
-                            Mileage = 679865,
                             Type = "Småbil"
                         },
                         new
                         {
                             LicensePlateNumber = "NNE867",
                             Available = true,
-                            Mileage = 238976,
                             Type = "Småbil"
                         },
                         new
                         {
                             LicensePlateNumber = "JML707",
                             Available = true,
-                            Mileage = 2134567,
                             Type = "Kombi"
                         },
                         new
                         {
                             LicensePlateNumber = "KHU876",
                             Available = false,
-                            Mileage = 65789,
                             Type = "Kombi"
                         },
                         new
                         {
                             LicensePlateNumber = "UYE987",
                             Available = true,
-                            Mileage = 760898,
                             Type = "Kombi"
                         },
                         new
                         {
                             LicensePlateNumber = "WWO098",
                             Available = true,
-                            Mileage = 6751099,
                             Type = "Kombi"
                         },
                         new
                         {
                             LicensePlateNumber = "PLD982",
                             Available = false,
-                            Mileage = 98624,
                             Type = "Lastbil"
                         },
                         new
                         {
                             LicensePlateNumber = "MJD291",
                             Available = true,
-                            Mileage = 6543210,
                             Type = "Lastbil"
                         });
                 });
 
-            modelBuilder.Entity("CarRentalServiceAPI.Models.Booking", b =>
+            modelBuilder.Entity("CarRentalServiceAPI.Models.Rental", b =>
                 {
                     b.HasOne("CarRentalServiceAPI.Models.Vehicle", "Vehicle")
                         .WithMany()

@@ -13,7 +13,7 @@ namespace CarRentalServiceAPI.Models
         public DateTime RentalEndTime { get; set; }
         public string CustomerNumber { get; set; }
         public bool Active { get; set; }
-        public int StartMileage { get; set; }
-        public int EndMileage { get; set; }
+        public float StartMileage { get; set; }
+        public float EndMileage { get; set; }
     }
 }
