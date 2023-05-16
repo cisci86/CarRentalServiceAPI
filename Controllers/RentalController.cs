@@ -20,7 +20,7 @@ namespace CarRentalServiceAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<string>> StartRental(RentalStartVM rentalInfo)
+        public async Task<ActionResult> StartRental(RentalStartVM rentalInfo)
         {
             //mapp view model to Rental model
             var newRental = _mapper.Map<Rental>(rentalInfo);
@@ -37,9 +37,9 @@ namespace CarRentalServiceAPI.Controllers
 
             //save changes in db
             await _context.SaveChangesAsync();
-
-            //return booking number
-            return newRental.BookingNumber.ToString();
+            
+            //return booking number n
+            return Ok(new { bookingnumber = newRental.BookingNumber.ToString() });
         }
 
         [HttpGet]
