@@ -9,6 +9,7 @@ namespace CarRentalServiceAPI.AutoMapper
         public RentalProfile() {
             CreateMap<RentalStartVM, Rental>()
                 .BeforeMap((s, d) => d.Active = true);
+            CreateMap<Rental, ActiveRentalVM>();
         }
     }
 }

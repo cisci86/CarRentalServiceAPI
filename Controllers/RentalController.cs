@@ -43,12 +43,16 @@ namespace CarRentalServiceAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Guid>>> GetActiveRentals()
+        public async Task<ActionResult> GetActiveRentals()
         {
-            List<Guid> activeRentals;
+            List<ActiveRentalVM> activeRentals = new List<ActiveRentalVM>();
             try
             {
-                activeRentals = _context.Rentals.Where(r => r.Active).Select(r => r.BookingNumber).ToList();
+               var rentals = _context.Rentals.Where(r => r.Active).ToList();
+                foreach (var item in rentals)
+                {
+                    activeRentals.Add(_mapper.Map<ActiveRentalVM>(item));
+                }
             }
             catch (Exception ex)
             {
@@ -91,7 +95,7 @@ namespace CarRentalServiceAPI.Controllers
                 
             }
             //returning the cost of rental
-            return Math.Round(totalCost, 1);
+            return Ok(new { totalRentalPrice =  Math.Round(totalCost, 1) });
         }
 
         private double CalculateDaysRented(DateTime startTime, DateTime endTime)
