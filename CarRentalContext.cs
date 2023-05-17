@@ -31,7 +31,7 @@ namespace CarRentalServiceAPI
                     new Vehicle { Type = "Lastbil", LicensePlateNumber = "PLD982", Available = false },
                     new Vehicle { Type = "Lastbil", LicensePlateNumber = "MJD291", Available = true }
                 );
-            
+            //I a "real" project would the types be in english and then translated in the frontend part or as own classes
             
             //Booking seed
             modelBuilder.Entity<Rental>()
